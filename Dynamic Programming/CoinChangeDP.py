@@ -14,6 +14,7 @@ def getChange(m):
                 if tmp < min_coins[i]:
                     min_coins[i] = tmp
             else:
+                # use continue if coin list is not in order
                 break
 
     return min_coins[m]
