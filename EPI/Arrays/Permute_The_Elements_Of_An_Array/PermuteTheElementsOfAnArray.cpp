@@ -26,7 +26,7 @@ void ApplyPermutation(vector<int> *perm_ptr, vector<int> *A_ptr)
 // Tester code
 int main()
 {
-    vector<int> perm{3,1,2,0};
+    vector<int> perm{3,0,1,2};
     vector<int> arr{21,32,43,55};
     ApplyPermutation(&perm, &arr);
     for(auto i: arr) {
