@@ -46,6 +46,7 @@ int countSquares(vector<vector<int>> &matrix)
     return count;
 }
 
+// tester code
 int main()
 {
     vector<vector<int>> matrix{{1, 1, 0, 0, 1}, {1, 0, 1, 1, 1}, {1, 1, 1, 1, 1}, {1, 0, 1, 0, 1}, {0, 0, 1, 0, 1}};
