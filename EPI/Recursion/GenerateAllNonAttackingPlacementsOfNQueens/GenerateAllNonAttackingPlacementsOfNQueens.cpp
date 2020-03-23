@@ -14,13 +14,13 @@ void SolveNQueens(int n, int row, vector<int> *col_placement, vector<vector<int>
 {
     if (row == n)
     {
-        result->emplace_back(*col_placement);
+        result->push_back(*col_placement);
     }
     else
     {
         for (int col = 0; col < n; ++col)
         {
-            col_placement->emplace_back(col);
+            col_placement->push_back(col);
             if (IsValid(*col_placement))
             {
                 SolveNQueens(n, row + 1, col_placement, result);
