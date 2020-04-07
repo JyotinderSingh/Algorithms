@@ -7,16 +7,15 @@ class Solution
 public:
     int countElements(vector<int> &arr)
     {
-        sort(arr.begin(), arr.end(), greater<int>());
+        unordered_map<int, int> dict;
         int count = 0;
-        vector<int> table(arr.size() + 1, 0);
         for (int i : arr)
         {
-            if (i > 0)
-            {
-                table[i - 1]++;
-            }
-            if (table[i] > 0)
+            dict[i] = 1;
+        }
+        for (int i : arr)
+        {
+            if (dict.find(i + 1) != dict.end())
             {
                 count++;
             }
