@@ -2,42 +2,27 @@
 class Solution
 {
 public:
+    string evaluate(string s)
+    {
+        string s2;
+        for (char ch : s)
+        {
+            if (ch == '#')
+            {
+                if (!s2.empty())
+                {
+                    s2.pop_back();
+                }
+            }
+            else
+            {
+                s2.push_back(ch);
+            }
+        }
+        return s2;
+    }
     bool backspaceCompare(string S, string T)
     {
-        string res1 = "", res2 = "";
-        int ctr = 0;
-        for (int i = S.size() - 1; i >= 0; i--)
-        {
-            if (S[i] == '#')
-            {
-                ctr++;
-            }
-            else if (ctr)
-            {
-                ctr--;
-            }
-            else
-            {
-                res1 += S[i];
-            }
-        }
-        ctr = 0;
-        for (int i = T.size() - 1; i >= 0; i--)
-        {
-            if (T[i] == '#')
-            {
-                ctr++;
-            }
-            else if (ctr)
-            {
-                ctr--;
-            }
-            else
-            {
-                res2 += T[i];
-            }
-        }
-
-        return res1 == res2;
+        return evaluate(S) == evaluate(T);
     }
 };
