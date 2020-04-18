@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/contiguous-array/submissions/
+// https://leetcode.com/problems/contiguous-array/
 class Solution
 {
 public:

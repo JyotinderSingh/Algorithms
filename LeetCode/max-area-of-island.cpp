@@ -35,35 +35,35 @@ public:
 
 // /////////////////////////////////////////////////////////////////////////
 // The below approach is faster, but modifies the input array
-class Solution_fast
-{
-    vector<vector<int>> grid;
+// class Solution_fast
+// {
+//     vector<vector<int>> grid;
 
-public:
-    int area(int r, int c)
-    {
-        if (r < 0 || r >= grid.size() || c < 0 || c >= grid[0].size() || grid[r][c] == 0)
-        {
-            return 0;
-        }
-        grid[r][c] = 0;
-        return (1 + area(r + 1, c) + area(r, c + 1) + area(r - 1, c) + area(r, c - 1));
-    }
+// public:
+//     int area(int r, int c)
+//     {
+//         if (r < 0 || r >= grid.size() || c < 0 || c >= grid[0].size() || grid[r][c] == 0)
+//         {
+//             return 0;
+//         }
+//         grid[r][c] = 0;
+//         return (1 + area(r + 1, c) + area(r, c + 1) + area(r - 1, c) + area(r, c - 1));
+//     }
 
-    int maxAreaOfIsland(vector<vector<int>> &grid)
-    {
-        this->grid = grid;
-        int ans = 0;
-        for (int r = 0; r < grid.size(); ++r)
-        {
-            for (int c = 0; c < grid[0].size(); ++c)
-            {
-                if (grid[r][c])
-                {
-                    ans = max(ans, area(r, c));
-                }
-            }
-        }
-        return ans;
-    }
-};
+//     int maxAreaOfIsland(vector<vector<int>> &grid)
+//     {
+//         this->grid = grid;
+//         int ans = 0;
+//         for (int r = 0; r < grid.size(); ++r)
+//         {
+//             for (int c = 0; c < grid[0].size(); ++c)
+//             {
+//                 if (grid[r][c])
+//                 {
+//                     ans = max(ans, area(r, c));
+//                 }
+//             }
+//         }
+//         return ans;
+//     }
+// };
