@@ -23,4 +23,4 @@ public:
         root->right = bstFromPreorder(A, bound);
         return root;
     }
-};
+};]
