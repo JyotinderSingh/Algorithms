@@ -1,25 +1,26 @@
 // https://leetcode.com/problems/diameter-of-binary-tree/
+// https://leetcode.com/problems/diameter-of-binary-tree/discuss/574302/cpp-recursive-approach-with-explanation
+
 class Solution
 {
 public:
-    int ans;
     int diameterOfBinaryTree(TreeNode *root)
     {
         if (root == NULL || (!root->left && !root->right))
         {
             return 0;
         }
-        ans = 1;
-        depth(root);
-        return ans;
+        int diameter = 0;
+        recursive(root, diameter);
+        return diameter;
     }
-    int depth(TreeNode *node)
+    int recursive(TreeNode *node, int &diameter)
     {
         if (node == NULL)
             return 0;
-        int L = depth(node->left);
-        int R = depth(node->right);
-        ans = max(ans, L + R);
+        int L = recursive(node->left, diameter);
+        int R = recursive(node->right, diameter);
+        diameter = max(diameter, L + R);
         return max(L, R) + 1;
     }
 };
