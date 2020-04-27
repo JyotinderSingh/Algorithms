@@ -1,3 +1,6 @@
 # Problem Solving and Algorithms
-### These are my attempts at a few competitive programming questions and trying to solve a couple of problems everyday
+### These are my attempts at a few Competitive Programming and Programming Interview questions.
+
+Most of the questions are from [Elements of Programming Interviews](/EPI) and [LeetCode](/LeetCode).
+
 #### Programming Languages: C++ and Python

@@ -23,10 +23,10 @@ vector<int> Multiply(vector<int> num1, vector<int> num2)
     // given predicate returns false.
     // i.e. it slices the array, starting from the first non-zero position
     // till the end.
-    result = vector<int>{find_if_not(begin(result), end(result), [](int a) {
-                             return !a;
-                         }),
-                         end(result)};
+    result = vector<int>{find_if(result.begin(), result.end(), [](int a) {
+                                 return a;
+                             }),
+                             result.end()};
     if (result.empty())
     {
         return {0};
