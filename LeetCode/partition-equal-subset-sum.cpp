@@ -17,9 +17,12 @@ public:
         }
         amount /= 2;
         vector<vector<int>> dp(nums.size() + 1, vector<int>(amount + 1, 0));
-        for (int i = 0; i < dp.size(); ++i)
+
+        // 0 amount using 0 items is true
+        dp[0][0] = 1;
+        for (int i = 1; i < dp.size(); ++i)
         {
-            dp[i][0] = 1;
+            dp[i][0] = 0;
         }
         for (int i = 1; i < dp[0].size(); ++i)
         {

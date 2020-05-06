@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/submissions/
+// https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -23,4 +23,4 @@ public:
         root->right = bstFromPreorder(A, bound);
         return root;
     }
-};]
+};

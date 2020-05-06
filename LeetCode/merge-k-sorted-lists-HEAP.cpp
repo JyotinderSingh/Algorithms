@@ -34,6 +34,7 @@ public:
         // This comparator will be used to build MIN HEAP.
         // We use a LAMBDA to define the comparator.
         auto comp = [&](ListNode *a, ListNode *b) {
+            // heap always uses the opposite comparison of the kind of heap we want
             return a->val > b->val;
         };
 

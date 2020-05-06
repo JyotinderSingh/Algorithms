@@ -11,14 +11,14 @@ public:
             {
                 count++;
             }
-            else
-            {
-                count--;
-            }
-            if (count == 0)
+            else if (count == 0)
             {
                 maj_index = i;
                 count = 1;
+            }
+            else
+            {
+                count--;
             }
         }
         return nums[maj_index];
