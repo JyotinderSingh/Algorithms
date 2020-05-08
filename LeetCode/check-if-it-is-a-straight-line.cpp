@@ -26,7 +26,7 @@ public:
             int dY2 = coords[i][1] - coords[i - 2][1]; // difference in y coords
             int dX2 = coords[i][0] - coords[i - 2][0]; // difference in x coords
 
-            // dX1*dY2 + dX2*dY1 = 0 for 3 points on a straight line
+            // dX1*dY2 - dX2*dY1 = 0 for 3 points on a straight line
             // as the area of triangle formed by them would be 0
             // This can be written as dX1*dY2 == dX2*dY1
             if (dX1 * dY2 != dX2 * dY1)
