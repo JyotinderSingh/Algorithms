@@ -59,6 +59,8 @@ public:
 
         // if you run out of nodes for right subTree, return the root and
         // let root->right remain NULL
+        // Instead of this we can also add a condition in the beginning that checks for
+        // postStart > postEnd and returns NULL
         if (RootLeftSubTreePostIdx + 1 == postEnd)
         {
             return root;
