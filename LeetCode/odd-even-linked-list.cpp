@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/odd-even-linked-list/
+// https://leetcode.com/problems/odd-even-linked-list/discuss/634620/easy-to-understand-solution-with-similar-variation-explained
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -31,5 +32,44 @@ public:
         }
         odd->next = evenHead;
         return head;
+    }
+};
+
+// FOR EVEN-ODD LL FOLLOW BELOW METHOD
+
+class Solution
+{
+public:
+    ListNode *oddEvenList(ListNode *head)
+    {
+        if (!head)
+        {
+            return NULL;
+        }
+        ListNode *odd = head;
+        ListNode *oddHead = head;
+        ListNode *even = head->next;
+        ListNode *evenHead = even;
+
+        while (odd and even and odd->next and even->next)
+        {
+            odd->next = even->next;
+            odd = odd->next;
+
+            // We need to add this extra check, otherwise we will have trouble connecting the end of the
+            // even list to the head of the odd list (as even pointer could become NULL if the check is not there)
+            if (odd->next)
+            {
+                even->next = odd->next;
+                even = even->next;
+            }
+        }
+
+        // connect the tail of the even list to the head of the odd list
+        even->next = oddHead;
+
+        // set the next pointer of the tail of the odd list to NULL
+        odd->next = NULL;
+        return evenHead;
     }
 };
