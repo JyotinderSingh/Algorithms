@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/trapping-rain-water/
+// https://www.youtube.com/watch?v=XqTBrQYYUcc&t=339s
 
 // O(N) time and O(1) space
 class Solution
