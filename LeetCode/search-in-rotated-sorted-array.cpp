@@ -4,42 +4,46 @@ class Solution
 public:
     int search(vector<int> &nums, int target)
     {
-        int lo = 0, high = nums.size() - 1;
-        int mid = 0;
-        // the loop goes on till lo == high
-        // i.e. we find the smallest element of the array
-        while (lo < high)
+        // idx will contain the index at which the original array would have ended
+        int idx = -1;
+        int n = nums.size();
+        int left = 0, right = n - 1;
+        // binary search to find idx
+        while (left <= right)
         {
-            mid = (lo + high) / 2;
-            if (nums[mid] > nums[high])
+            int mid = left + (right - left) / 2;
+            if (nums[mid] > nums[n - 1])
             {
-                lo = mid + 1;
+                idx = mid;
+                left = mid + 1;
             }
             else
             {
-                high = mid;
+                right = mid - 1;
             }
         }
-        // now mid is the number of elements by which the array
-        // has been rotated. We use it to calculate the real mid
-        int rot = lo; // lo == high
-        lo = 0, high = nums.size() - 1;
-        while (lo <= high)
+        // rotations will be idx + 1
+        int rot = idx + 1;
+        left = 0, right = n - 1;
+
+        // Apply binary search using this rotation information
+        while (left <= right)
         {
-            int mid = (lo + high) / 2;
-            int realmid = (mid + rot) % nums.size();
-            cout << realmid << endl;
-            if (nums[realmid] == target)
+            int mid = left + (right - left) / 2;
+
+            // real mid would be the one we use fo comparisons
+            int real_mid = (mid + rot) % n;
+            if (nums[real_mid] == target)
             {
-                return realmid;
+                return real_mid;
             }
-            else if (nums[realmid] < target)
+            else if (nums[real_mid] > target)
             {
-                lo = mid + 1;
+                right = mid - 1;
             }
             else
             {
-                high = mid - 1;
+                left = mid + 1;
             }
         }
         return -1;
