@@ -21,7 +21,7 @@ void DutchFlagPartition(int pivot_index, vector<int> *A_ptr)
 
     while (equal < larger)
     {
-        // A[equal] is the incomibng unclassified element
+        // A[equal] is the incoming unclassified element
         if (A[equal] < pivot)
         {
             swap(A[smaller++], A[equal++]);
