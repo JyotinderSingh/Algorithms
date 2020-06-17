@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/max-area-of-island/submissions/
+// https://leetcode.com/problems/max-area-of-island/
 class Solution
 {
     vector<vector<int>> grid;
