@@ -22,11 +22,13 @@ vector<string> GetValidIPAddress(const string &s)
     vector<string> result;
     for (size_t i = 1; i < 4 && i < s.size(); ++i)
     {
+        // start from 0, and take i digits
         auto first = s.substr(0, i);
         if (IsValidPart(first))
         {
             for (size_t j = i + 1; i + j < s.size() && j < 4; ++j)
             {
+                // start from i'th index, and take j digits
                 auto second = s.substr(i, j);
                 if (IsValidPart(second))
                 {

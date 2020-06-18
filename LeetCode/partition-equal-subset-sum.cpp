@@ -20,14 +20,6 @@ public:
 
         // 0 amount using 0 items is true
         dp[0][0] = 1;
-        for (int i = 1; i < dp.size(); ++i)
-        {
-            dp[i][0] = 0;
-        }
-        for (int i = 1; i < dp[0].size(); ++i)
-        {
-            dp[0][i] = 0;
-        }
         for (int row = 1; row < dp.size(); ++row)
         {
             for (int col = 1; col < dp[0].size(); ++col)
@@ -40,5 +32,40 @@ public:
             }
         }
         return dp[nums.size()][amount];
+    }
+};
+
+/////////////////////////////////////////////////
+/////////////////CLEANER CODE////////////////////
+class Solution
+{
+public:
+    bool canPartition(vector<int> &nums)
+    {
+        int amount = 0;
+        for (const auto &i : nums)
+        {
+            amount += i;
+        }
+        if (amount % 2 != 0)
+        {
+            return false;
+        }
+        amount /= 2;
+        vector<vector<int>> dp(nums.size() + 1, vector<int>(amount + 1, 0));
+        // It is possible to get 0 sum, if you choose 0 elements
+        dp[0][0] = 1;
+        for (int i = 1; i < dp.size(); ++i)
+        {
+            for (int j = 1; j < dp[0].size(); ++j)
+            {
+                dp[i][j] = dp[i - 1][j];
+                if (nums[i - 1] <= j)
+                {
+                    dp[i][j] |= dp[i - 1][j - nums[i - 1]];
+                }
+            }
+        }
+        return dp[dp.size() - 1][dp[0].size() - 1];
     }
 };
