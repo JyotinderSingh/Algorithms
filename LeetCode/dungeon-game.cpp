@@ -27,11 +27,11 @@ public:
                 if (row == rows - 1 && col == cols - 1)
                     continue;
 
-                // minimum HP needed to if here, if we are to enter the dungeon to the right
-                int HP_right = (row == rows - 1) ? INT_MAX : dp[row + 1][col] - dungeon[row][col];
-
                 // minimum HP needed to if here, if we are to enter the dungeon to the bottom
-                int HP_down = (col == cols - 1) ? INT_MAX : dp[row][col + 1] - dungeon[row][col];
+                int HP_down = (row == rows - 1) ? INT_MAX : dp[row + 1][col] - dungeon[row][col];
+
+                // minimum HP needed to if here, if we are to enter the dungeon to the right
+                int HP_right = (col == cols - 1) ? INT_MAX : dp[row][col + 1] - dungeon[row][col];
 
                 // This will decide which direction we'll end up going
                 int HP = min(HP_right, HP_down);

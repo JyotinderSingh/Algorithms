@@ -15,7 +15,12 @@ public:
                 int j = i + shift;
                 if (s[i] == s[j])
                 {
-                    dp[i][j] = ((i + 1) >= (j - 1)) ? 1 : dp[i + 1][j - 1];
+                    // i + 1 > j - 1 condition takes care of the conditions when
+                    // we are looking at two scenarios:
+                    // 1. i == j, that is, the window is 1 char long
+                    // 2. when the window is 2 chars long, and there is no
+                    // element between them
+                    dp[i][j] = ((i + 1) > (j - 1)) ? 1 : dp[i + 1][j - 1];
                     count += dp[i][j];
                 }
             }
