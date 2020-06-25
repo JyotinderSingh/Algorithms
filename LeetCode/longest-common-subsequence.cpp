@@ -9,7 +9,6 @@ public:
             return 0;
         }
         vector<vector<int>> dp(text1.size() + 1, vector<int>(text2.size() + 1, 0));
-        int max_len = 0;
         for (int i = 1; i < dp.size(); ++i)
         {
             for (int j = 1; j < dp[0].size(); ++j)
@@ -19,7 +18,6 @@ public:
                 {
                     // characters match, so remove it from both the strings
                     dp[i][j] = dp[i - 1][j - 1] + 1;
-                    max_len = max(max_len, dp[i][j]);
                 }
                 else
                 {
@@ -29,6 +27,6 @@ public:
                 }
             }
         }
-        return max_len;
+        return dp[dp.size() - 1][dp[0].size() - 1];
     }
 };

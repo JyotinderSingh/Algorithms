@@ -27,7 +27,7 @@ public:
                 else
                 {
                     // if s[i] != s[j], max length of palindromic subsequence for the current window
-                    // will be the same as that for the substring contained inside s[i] and s[j] (exclusive)
+                    // will be the same as that for the substring contained inside s[i] and s[j]
                     dp[i][j] = max(dp[i + 1][j], dp[i][j - 1]);
                 }
             }
