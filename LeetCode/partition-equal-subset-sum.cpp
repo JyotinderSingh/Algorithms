@@ -22,7 +22,8 @@ public:
         dp[0][0] = 1;
         for (int row = 1; row < dp.size(); ++row)
         {
-            for (int col = 1; col < dp[0].size(); ++col)
+            // can start from j = 1 also, but this is logically more sound
+            for (int col = 0; col < dp[0].size(); ++col)
             {
                 dp[row][col] = dp[row - 1][col];
                 if (nums[row - 1] <= col)
@@ -57,7 +58,7 @@ public:
         dp[0][0] = 1;
         for (int i = 1; i < dp.size(); ++i)
         {
-            for (int j = 1; j < dp[0].size(); ++j)
+            for (int j = 0; j < dp[0].size(); ++j)
             {
                 dp[i][j] = dp[i - 1][j];
                 if (nums[i - 1] <= j)
