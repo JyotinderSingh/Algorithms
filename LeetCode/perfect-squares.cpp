@@ -1,5 +1,29 @@
 // https://leetcode.com/problems/perfect-squares/
 
+// Simple DP - preferred
+class Solution
+{
+public:
+    int numSquares(int n)
+    {
+        vector<int> dp(n + 1, INT_MAX);
+        dp[0] = 0;
+
+        for (int i = 1; i < dp.size(); ++i)
+        {
+            int j = 1;
+            int prod = 1;
+            while (prod <= i)
+            {
+                dp[i] = min(dp[i], dp[i - prod] + 1);
+                j++;
+                prod = j * j;
+            }
+        }
+        return dp[n];
+    }
+};
+
 // Bottom Up
 class Solution
 {
@@ -65,5 +89,3 @@ public:
         return dp[n];
     }
 };
-
-// Bottom Up
