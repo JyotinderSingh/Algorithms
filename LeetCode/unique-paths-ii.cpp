@@ -1,0 +1,29 @@
+// https://leetcode.com/problems/unique-paths-ii/
+class Solution
+{
+public:
+    int uniquePathsWithObstacles(vector<vector<int>> &grid)
+    {
+        // add an extra row and column in DP table in addition to the grid dimensions
+        // (helps with cases where you have obstacles in first row or column)
+        vector<vector<int>> dp(grid.size() + 1, vector<int>(grid[0].size() + 1, 0));
+
+        // Check if it is possible to start
+        dp[1][1] = grid[0][0] ? 0 : 1;
+
+        // traverse the grid
+        for (int i = 1; i < dp.size(); ++i)
+        {
+            for (int j = 1; j < dp[0].size(); ++j)
+            {
+                // skip checking the first index (we already set it)
+                if (i == 1 && j == 1)
+                    continue;
+
+                // add the number of possible paths to the previous cells
+                dp[i][j] = grid[i - 1][j - 1] ? 0 : dp[i - 1][j] + dp[i][j - 1];
+            }
+        }
+        return dp[dp.size() - 1][dp[0].size() - 1];
+    }
+};
