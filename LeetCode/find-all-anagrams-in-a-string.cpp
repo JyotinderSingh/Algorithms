@@ -60,3 +60,63 @@ public:
         return res;
     }
 };
+
+/////////////////////////////////////////////////////
+//////////// MORE READABLE SOLUTION /////////////////
+
+class Solution
+{
+public:
+    vector<int> findAnagrams(string s, string p)
+    {
+        vector<int> res;
+
+        // If the size of the substring is greater than
+        // the given string, return empty array
+        if (p.size() > s.size())
+            return res;
+
+        // create a hashmap to keep track of the characters in the substring
+        vector<int> hash(256, 0);
+        for (int i = 0; i < p.size(); ++i)
+            hash[p[i]]++;
+
+        int left = 0, right = 0, count = p.size();
+
+        // Iterate through the givene string
+        while (right < s.size())
+        {
+            // If the current character being scanned occured in p, decrease count
+            if (hash[s[right]] >= 1)
+            {
+                count--;
+            }
+            // decrease the frequency of the current character in the hashmap as you encounter it
+            hash[s[right]]--;
+            // move the right bound
+            right++;
+
+            // If count == 0, means you found all the characters of p in current substring
+            if (count == 0)
+            {
+                res.push_back(left);
+            }
+
+            // If the substring is of the size of p
+            if (right - left == p.size())
+            {
+                // if the current character's frequency >=0, it means it occured in p as well
+                // hence now that you are leaving it behind, add back its count to the count variable
+                if (hash[s[left]] >= 0)
+                {
+                    count++;
+                }
+                // increase it's frequency back in the hashmap also
+                hash[s[left]]++;
+                // move the left bound towards the right
+                left++;
+            }
+        }
+        return res;
+    }
+};

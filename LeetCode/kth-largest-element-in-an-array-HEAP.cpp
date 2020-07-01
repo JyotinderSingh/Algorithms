@@ -18,24 +18,24 @@ public:
 };
 
 // MIN HEAP
-// class Solution
-// {
-// public:
-//     int findKthLargest(vector<int> &nums, int k)
-//     {
-//         priority_queue<int, vector<int>, greater<int>> pq;
-//         for (int i = 0; i < nums.size(); ++i)
-//         {
-//             pq.push(nums[i]);
-//             // here we only let the largest k elements of the array
-//             // remain in the heap, as we're removing all the smallest ones
-//             if (pq.size() > k)
-//             {
-//                 pq.pop();
-//             }
-//         }
-//         // only k largest elements of the array remain
-//         // and the smallest of those will be the kth largest
-//         return pq.top();
-//     }
-// };
+class Solution
+{
+public:
+    int findKthLargest(vector<int> &nums, int k)
+    {
+        priority_queue<int, vector<int>, greater<int>> pq;
+        for (int i = 0; i < nums.size(); ++i)
+        {
+            pq.push(nums[i]);
+            // here we only let the largest k elements of the array
+            // remain in the heap, as we're removing all the smallest ones
+            if (pq.size() > k)
+            {
+                pq.pop();
+            }
+        }
+        // only k largest elements of the array remain
+        // and the smallest of those will be the kth largest
+        return pq.top();
+    }
+};
