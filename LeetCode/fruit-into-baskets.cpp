@@ -1,5 +1,42 @@
 // https://leetcode.com/problems/fruit-into-baskets/
 
+///// SOLUTION WITHOUT HASHMAP /////
+class Solution
+{
+public:
+    int totalFruit(vector<int> &tree)
+    {
+        int res = 0, current_max;
+        int last_fruit = -1, second_last_fruit = -1, last_fruit_count = 0;
+        for (const auto &fruit : tree)
+        {
+
+            if (fruit == last_fruit || fruit == second_last_fruit)
+            {
+                current_max++;
+            }
+            else
+            {
+                current_max = last_fruit_count + 1;
+            }
+
+            if (fruit == last_fruit)
+                last_fruit_count++;
+            else
+            {
+                last_fruit_count = 1;
+                second_last_fruit = last_fruit;
+                last_fruit = fruit;
+            }
+
+            res = max(res, current_max);
+        }
+        return res;
+    }
+};
+
+/////////////////////////////
+
 class Solution
 {
 public:
