@@ -1,4 +1,10 @@
 // https://leetcode.com/problems/game-of-life/
+/*
+* Key:
+* -1: The cell is currently alive, but will die in the next state
+* 1: The cell is currently live, and will live till the next state as well
+* 2: The cell is currently dead, but will become alive in the next state
+*/
 class Solution
 {
 public:

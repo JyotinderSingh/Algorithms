@@ -12,34 +12,35 @@
  */
 class Solution
 {
-    int xp = -1, yp = -1, xl, yl;
+    int x_parent = -1, x_level = -1, y_parent = -1, y_level = -1;
 
 public:
     bool isCousins(TreeNode *root, int x, int y)
     {
-        helper(root, x, y, 0);
-        return xp != yp && xl == yl;
+        findCousins(root, x, y, 0);
+        return x_parent != y_parent && x_level == y_level;
     }
 
-    void helper(TreeNode *root, int x, int y, int level)
+    void findCousins(TreeNode *root, int x, int y, int level)
     {
-        if (!root || (xp != -1 && yp != -1))
+        if (root == nullptr || (x_parent != -1 && y_parent != -1))
         {
             return;
         }
         if ((root->left && root->left->val == x) || (root->right && root->right->val == x))
         {
-            xp = root->val;
-            xl = level + 1;
+            x_parent = root->val;
+            x_level = level + 1;
             return;
         }
         if ((root->left && root->left->val == y) || (root->right && root->right->val == y))
         {
-            yp = root->val;
-            yl = level + 1;
+            y_parent = root->val;
+            y_level = level + 1;
             return;
         }
-        helper(root->left, x, y, level + 1);
-        helper(root->right, x, y, level + 1);
+
+        findCousins(root->left, x, y, level + 1);
+        findCousins(root->right, x, y, level + 1);
     }
 };
