@@ -14,6 +14,8 @@ class Solution
 public:
     ListNode *mergeKLists(vector<ListNode *> &lists)
     {
+        if (lists.size() == 0)
+            return nullptr;
         // Create an ordered map
         map<int, int> nodes;
 
