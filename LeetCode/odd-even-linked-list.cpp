@@ -35,6 +35,31 @@ public:
     }
 };
 
+// Alt solution
+class Solution
+{
+public:
+    ListNode *oddEvenList(ListNode *head)
+    {
+        if (!head)
+            return head;
+        ListNode dummyHead(0);
+        dummyHead.next = head;
+        auto odd = head;
+        auto even = head->next;
+        auto evenHead = head->next;
+        while (even && even->next)
+        {
+            odd->next = even->next;
+            even->next = even->next->next;
+            odd = odd->next;
+            odd->next = evenHead;
+            even = even->next;
+        }
+        return dummyHead.next;
+    }
+};
+
 // FOR EVEN-ODD LL FOLLOW BELOW METHOD
 
 class Solution

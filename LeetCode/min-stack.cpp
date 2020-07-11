@@ -1,30 +1,23 @@
-// https://leetcode.com/problems/min-stack/
 class MinStack
 {
-    vector<int> container;
-    vector<int> min;
-    int last_min = INT_MAX;
+    vector<int> min, container;
 
 public:
     /** initialize your data structure here. */
-    // MinStack() {
-    // }
+    MinStack()
+    {
+    }
 
     void push(int x)
     {
-        int lastmin = min.empty() ? ~(1 << 31) : min.back();
-        if (lastmin < x)
-            min.push_back(lastmin);
-        else
-            min.push_back(x);
-
+        int lastMin = min.size() ? min.back() : INT_MAX;
+        x < lastMin ? min.push_back(x) : min.push_back(lastMin);
         container.push_back(x);
     }
 
     void pop()
     {
-        container.pop_back();
-        min.pop_back();
+        container.pop_back(), min.pop_back();
     }
 
     int top()

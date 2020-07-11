@@ -13,10 +13,8 @@ public:
     void helper(vector<int> &nums, int i, vector<vector<int>> &res, vector<int> &cur)
     {
         res.push_back(cur);
-        if (i == nums.size())
-        {
-            return;
-        }
+        // if (i == nums.size())
+        //     return;
         for (int j = i; j < nums.size(); ++j)
         {
             cur.push_back(nums[j]);
