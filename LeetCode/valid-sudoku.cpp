@@ -16,7 +16,6 @@ public:
                     }
                     else
                     {
-                        cout << board[i][j];
                         return false;
                     }
                 }

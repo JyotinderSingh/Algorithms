@@ -1,4 +1,4 @@
-// https : //leetcode.com/problems/valid-sudoku/
+// https://www.leetcode.com/problems/valid-sudoku/
 class Solution
 {
 public:
