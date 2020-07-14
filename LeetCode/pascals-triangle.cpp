@@ -1,4 +1,26 @@
 // https://leetcode.com/problems/pascals-triangle/
+
+class Solution
+{
+public:
+    vector<vector<int>> generate(int numRows)
+    {
+        vector<vector<int>> pascal_triangle;
+        for (int i = 0; i < numRows; ++i)
+        {
+            vector<int> curr_row;
+            for (int j = 0; j <= i; ++j)
+            {
+                curr_row.push_back((0 < j && j < i) ? pascal_triangle.back()[j - 1] + pascal_triangle.back()[j] : 1);
+            }
+            pascal_triangle.push_back(curr_row);
+        }
+        return pascal_triangle;
+    }
+};
+
+////////////////////////////////////////////////////////////////
+
 class Solution
 {
 public:
