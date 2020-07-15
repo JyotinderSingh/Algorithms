@@ -1,4 +1,45 @@
-// https://leetcode.com/problems/reverse-words-in-a-string/submissions/
+// https://leetcode.com/problems/reverse-words-in-a-string/
+
+class Solution
+{
+public:
+    string reverseWords(string s)
+    {
+        string res;
+        if (!s.size())
+            return res;
+        int i = 0, j = s.size() - 1;
+        while (s[i] == ' ' && i <= j)
+            i++;
+        while (s[j] == ' ' && j >= i)
+            j--;
+        for (; j >= i; --j)
+        {
+            if (s[j] == ' ')
+            {
+                while (j > 0 && s[j - 1] == ' ')
+                {
+                    j--;
+                }
+            }
+            res += s[j];
+        }
+
+        int start = 0, end;
+        while ((end = res.find(" ", start)) != string::npos)
+        {
+            reverse(res.begin() + start, res.begin() + end);
+            start = end + 1;
+        }
+
+        reverse(res.begin() + start, res.end());
+
+        return res;
+    }
+};
+
+///////////////////////////////////////////////////
+
 class Solution
 {
 public:
