@@ -1,40 +1,60 @@
 // https://leetcode.com/problems/powx-n/submissions/
+// https://www.youtube.com/watch?v=wAyrtLAeWvI
+
+class Solution
+{
+public:
+    double myPow(double x, long long int n)
+    {
+        if (n == 0)
+            return 1;
+        if (n < 0)
+        {
+            return myPow(1 / x, -n);
+        }
+        else
+        {
+            if (n % 2 == 0)
+            {
+                auto y = myPow(x, n / 2);
+                return y * y;
+            }
+            else
+            {
+                return x * myPow(x, n - 1);
+            }
+        }
+    }
+};
+
+////////////////////////////////////////////////////////////////
+
 class Solution
 {
 public:
     double myPow(double x, int n)
     {
-        if (x == 0)
-        {
-            return 1;
-        }
-        if (x == 1)
-        {
-            return x;
-        }
-        return getPow(x, n);
+        return powFunc(x, n);
     }
-    double getPow(double x, int pow)
-    {
-        if (pow == 0)
-        {
-            return 1;
-        }
 
-        double temp = getPow(x, pow / 2);
-        if (pow % 2 == 0)
+    double powFunc(double x, long long int n)
+    {
+        if (n == 0)
+            return 1;
+        if (n < 0)
         {
-            return temp * temp;
+            return powFunc(1 / x, -n);
         }
         else
         {
-            if (pow > 0)
+            if (n % 2 == 0)
             {
-                return x * temp * temp;
+                auto y = powFunc(x, n / 2);
+                return y * y;
             }
             else
             {
-                return (temp * temp) / x;
+                return x * powFunc(x, n - 1);
             }
         }
     }
