@@ -22,7 +22,7 @@ public:
             }
 
             /*
-            * Push the element into the stack only if
+            * Push the element into the stack only if either
             * 1. The number isn't 0
             * 2. Number if 0, but stack isn't empty. i.e. it
             * won't be a trailing 0

@@ -5,34 +5,23 @@ class Solution
 public:
     int minSetSize(vector<int> &arr)
     {
-        unordered_map<int, int> um;
-        //  count the frequencies
-        for (int i : arr)
-        {
-            um[i]++;
-        }
+        unordered_map<int, int> freq;
 
-        unordered_map<int, int>::iterator itr;
-        int count = 0, sum = 0;
-        vector<int> v;
-        // add all frequencies into a vector
-        for (itr = um.begin(); itr != um.end(); ++itr)
-        {
-            v.push_back(itr->second);
-        }
-        // sort the vector in descending order
-        sort(v.begin(), v.end(), greater<int>());
+        for (int i = 0; i < arr.size(); ++i)
+            freq[arr[i]]++;
 
-        // start adding up frequencies till they add up to the threshold
-        for (int i : v)
+        priority_queue<int> pq;
+
+        for (auto iter : freq)
+            pq.push(iter.second);
+
+        int count = 0, res = 0;
+        while (count * 2 < arr.size())
         {
-            count++;
-            sum += i;
-            if (sum >= arr.size() / 2)
-            {
-                return count;
-            }
+            res++;
+            count += pq.top();
+            pq.pop();
         }
-        return count;
+        return res;
     }
 };
