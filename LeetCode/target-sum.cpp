@@ -48,10 +48,10 @@ class Solution
 public:
     int findTargetSumWays(vector<int> &nums, int S)
     {
-        return findTargetSumWaysRecur(nums, S, 0, S);
+        return findTargetSumWaysRecur(nums, 0, S);
     }
 
-    int findTargetSumWaysRecur(const vector<int> &nums, int S, int currIndex, ll targetSum)
+    int findTargetSumWaysRecur(const vector<int> &nums, int currIndex, ll targetSum)
     {
 
         auto serial = serialize(currIndex, targetSum);
@@ -70,8 +70,8 @@ public:
             return 0;
         }
 
-        ll numWaysAdd = findTargetSumWaysRecur(nums, S, currIndex + 1, targetSum - nums[currIndex]);
-        ll numWaysMinus = findTargetSumWaysRecur(nums, S, currIndex + 1, targetSum + nums[currIndex]);
+        ll numWaysAdd = findTargetSumWaysRecur(nums, currIndex + 1, targetSum - nums[currIndex]);
+        ll numWaysMinus = findTargetSumWaysRecur(nums, currIndex + 1, targetSum + nums[currIndex]);+
         ll totalWays = numWaysAdd + numWaysMinus;
 
         memo[serial] = totalWays;
