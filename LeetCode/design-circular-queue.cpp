@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/design-circular-queue/
+
 class MyCircularQueue
 {
     int front, rear, size;
