@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.List;
+
 // https://leetcode.com/problems/permutations/
 
 class Solution {
