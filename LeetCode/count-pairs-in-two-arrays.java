@@ -18,6 +18,7 @@ class Solution {
      * and use two pointer approach to find number of
      * combinations satisfying eq. 1
      */
+    "dfg".lastIndexOf("dfg");
     int[] nums = new int[nums1.length];
     for (int i = 0; i < nums.length; ++i) {
       nums[i] = nums1[i] - nums2[i];
