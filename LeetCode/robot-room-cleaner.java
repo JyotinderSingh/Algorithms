@@ -1,7 +1,7 @@
+// https://leetcode.com/problems/robot-room-cleaner/
+
 import java.util.HashSet;
 import java.util.Set;
-
-// https://leetcode.com/problems/robot-room-cleaner/
 
 /**
  * You are controlling a robot that is located somewhere in a room. The room is
@@ -123,7 +123,7 @@ class Solution {
         int nx = x + dir[direction][0];
         int ny = y + dir[direction][1];
 
-        // recursively clean this position.
+        // recursively clean this position in this direction.
         backtrack(nx, ny, direction, robot);
 
         // go back to the original (x, y) position

@@ -7,7 +7,7 @@ public:
     int val;
     Node* next;
     Node* random;
-    
+
     Node(int _val) {
         val = _val;
         next = NULL;
@@ -129,7 +129,7 @@ public:
     int val;
     Node* next;
     Node* random;
-    
+
     Node(int _val) {
         val = _val;
         next = NULL;
@@ -162,7 +162,7 @@ public:
           2nd pass.
           Reset the curr pointer to the head of the original list
           Give all clones their next and random pointer assignments.
-          Our cloneMap lets us reach an original node's clone in 
+          Our cloneMap lets us reach an original node's clone in
           O(1) time.
         */
     curr = head;

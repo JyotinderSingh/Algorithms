@@ -4,7 +4,7 @@ class Solution
 public:
     int longestPalindromeSubseq(string s)
     {
-        vector<vector<int>> dp(s.size(), vector<int>(s.size(), 0));
+        vector<vector<int> > dp(s.size(), vector<int>(s.size(), 0));
 
         // Traverse the upper right triangle of dp table, as we scan the string
         // from position i to j (inclusive).
@@ -12,7 +12,7 @@ public:
         // between indices i and j (inclusive)
         for (int shift = 0; shift < dp.size(); ++shift)
         {
-            for (int i = 0; i + shift < dp[0].size(); ++i)
+            for (int i = 0; i + shift < dp.size(); ++i)
             {
                 int j = i + shift;
 
@@ -35,3 +35,41 @@ public:
         return dp[0][dp[0].size() - 1];
     }
 };
+
+// Method 2
+// https://www.youtube.com/watch?v=_nCsPn7_OgI
+
+class Solution
+{
+public
+    int longestPalindromeSubseq(String s)
+    {
+        int[][] dp = new int[s.length()][s.length()];
+
+        for (int shift = 0; shift < dp.length; ++shift)
+        {
+            for (int i = 0; i + shift < dp.length; ++i)
+            {
+                int j = i + shift;
+
+                // Here i and j are the left and right index of the subsequence
+                // of the string being considered
+                if (s.charAt(i) == s.charAt(j))
+                {
+                    // 1. if i == j, then simply put 1, as window is 1 char long
+                    // 2. in other cases, add 2 to the maxlen for the substring
+                    // contained inside s[i] and s[j] (exclusive).
+                    dp[i][j] = (i == j) ? 1 : 2 + dp[i + 1][j - 1];
+                }
+                else
+                {
+                    // if s[i] != s[j], max length of palindromic subsequence
+                    // for the current window will be the same as that for the
+                    // substring contained inside s[i] and s[j]
+                    dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1]);
+                }
+            }
+        }
+        return dp[0][dp[0].length - 1];
+    }
+}
