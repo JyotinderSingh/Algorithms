@@ -1,4 +1,3 @@
-package LeetCode;
 // https://leetcode.com/problems/copy-list-with-random-pointer/
 
 // O(N) time and O(1) space
