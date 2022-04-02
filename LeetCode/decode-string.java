@@ -1,8 +1,8 @@
+// https://leetcode.com/problems/decode-string/
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-// https://leetcode.com/problems/decode-string/
 
 class Solution {
   public String decodeString(String s) {
