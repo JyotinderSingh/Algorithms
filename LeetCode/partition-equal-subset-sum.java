@@ -30,8 +30,10 @@ class Solution {
     // 0 sum is possible with 0 elements selected.
     dp[0][0] = 1;
     for (int i = 1; i < dp.length; ++i) {
-      for (int j = 1; j < dp[0].length; ++j) {
+      for (int j = 0; j < dp[0].length; ++j) {
         // if we do not pick a new number.
+        // If we can reach this sum with a smaller set of numbers then
+        // we can also reach it with the same set of numbers + current number.
         dp[i][j] = dp[i - 1][j];
 
         // if the current number being considered is smaller than the sum we're
@@ -40,6 +42,9 @@ class Solution {
           // see if the entry for 'j - nums[i - 1]' amount with all
           // previously seen numbers was non zero - which means it was possible
           // to achieve that number with all the previously seen numbers.
+          // We basically want to see, that if we can achieve 'j - nums[i - 1]'
+          // amount with all the previously seen numbers, then we can achieve
+          // 'j' amount with the current number being considered.
           dp[i][j] |= dp[i - 1][j - nums[i - 1]];
         }
       }

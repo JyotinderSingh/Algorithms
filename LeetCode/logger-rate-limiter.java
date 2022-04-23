@@ -1,6 +1,6 @@
-import java.util.HashMap;
-
 // https://leetcode.com/problems/logger-rate-limiter/
+
+import java.util.HashMap;
 
 /**
  * Design a logger system that receives a stream of messages along with their
