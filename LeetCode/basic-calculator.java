@@ -1,6 +1,73 @@
 // https://leetcode.com/problems/basic-calculator/
+// https://leetcode.com/problems/basic-calculator/discuss/62361/Iterative-Java-solution-with-stack
+// https://leetcode.com/problems/basic-calculator/discuss/62361/Iterative-Java-solution-with-stack/64037
 
 import java.util.Stack;
+
+class Solution {
+  public int calculate(String s) {
+    Stack<Integer> stack = new Stack<>();
+    int result = 0;
+    int num = 0;
+    int lastSign = 1;
+
+    for (char ch : s.toCharArray()) {
+      // We are building the number.
+      if (Character.isDigit(ch)) {
+        num = (num * 10) + (ch - '0');
+      } else if (ch == '+') {
+        // flush the number we just built to the result.
+        // We multiply it by the corresponding sign that was present before this number.
+        result += lastSign * num;
+
+        num = 0; // reset the number.
+        lastSign = 1;
+      } else if (ch == '-') {
+        // flush the number we just build to the result.
+        // We multiply it by the corresponding sign that was present before this number.
+        result += lastSign * num;
+
+        num = 0; // reset the number
+        lastSign = -1;
+      } else if (ch == '(') {
+        // We entering a paranthesis.
+        // We first save the result accumulated so far to the stack.
+        stack.push(result);
+        // We also want to push in the sign just before this paranthesis
+        // to the stack, since it will influence the sign of all the elements
+        // inside this paranthesis.
+        stack.push(lastSign);
+
+        // reset the sign and result for the paranthesis evaluation.
+        lastSign = 1;
+        result = 0;
+      } else if (ch == ')') {
+        // We are now exiting the paranthesis.
+        // Now we need to merge the result we just calculated for the expression
+        // inside said paranthesis with the one we had stored on the stack (from the
+        // outside experession).
+        // First we flush the number we have on our hand to the paranthesis result.
+        result += lastSign * num;
+        num = 0; // reset the number.
+
+        // Now we want to set the sign of this entire result, based on the sign
+        // that was present in front of the paranthesis (we had pushed this to the
+        // stack).
+        result *= stack.pop();
+
+        // Finally add this result to the external result we had accumulated before
+        // entering the
+        // paranthesis.
+        result += stack.pop();
+      }
+    }
+
+    if (num != 0)
+      result += lastSign * num;
+
+    return result;
+  }
+}
 
 class Solution {
   public int calculate(String s) {

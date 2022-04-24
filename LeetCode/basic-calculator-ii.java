@@ -9,7 +9,7 @@ class Solution {
     int result = 0;
     int lastNum = 0;
     int currNum = 0;
-    char lastOperand = '+';
+    char lastOperator = '+';
 
     for (int i = 0; i < s.length(); ++i) {
       char ch = s.charAt(i);
@@ -24,7 +24,7 @@ class Solution {
       // or
       // this character is an operator.
       if (i == s.length() - 1 || !Character.isDigit(ch) && ch != ' ') {
-        switch (lastOperand) {
+        switch (lastOperator) {
           case '+':
             result += lastNum;
             lastNum = currNum;
@@ -40,7 +40,7 @@ class Solution {
             lastNum /= currNum;
             break;
         }
-        lastOperand = ch;
+        lastOperator = ch;
         currNum = 0;
       }
     }
@@ -69,7 +69,7 @@ class Solution {
     s += "+";
 
     Stack<Integer> stack = new Stack<>();
-    char lastOperand = '+';
+    char lastOperator = '+';
     int num = 0;
 
     // we iterate through the characters and keep track of the last sign we saw.
@@ -88,19 +88,19 @@ class Solution {
       // We are here because we have finished parsing the number
       // Now we can simply push the result to the stack depending on
       // whatever operator was in front of the number we just parsed.
-      if (lastOperand == '+') {
+      if (lastOperator == '+') {
         stack.push(num);
-      } else if (lastOperand == '-') {
+      } else if (lastOperator == '-') {
         // we can convert '-' into addition by turning the operand negative.
         stack.push(-num);
-      } else if (lastOperand == '/') {
+      } else if (lastOperator == '/') {
         stack.push(stack.pop() / num);
-      } else if (lastOperand == '*') {
+      } else if (lastOperator == '*') {
         stack.push(stack.pop() * num);
       }
 
       // since this was an operator, update 'op'
-      lastOperand = ch;
+      lastOperator = ch;
       // reset operand to 0.
       num = 0;
     }
