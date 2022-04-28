@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/find-duplicate-subtrees/
 
 // O(N^2) time, O(N) space.
-// ince strings are bring used, the concatenation takes O(n) time in each 
+// Since strings are bring used, the concatenation takes O(n) time in each 
 // recursive call taking overall complexity to O(n2).
 // We perform postorder traversal, serializing and hashing the serials of subtrees 
 // in the process. We can recognize a duplicate subtree by its serialization.

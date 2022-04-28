@@ -9,7 +9,7 @@
  * [9, 5, 4, 3, 1]
  * We need to find the first pair of two successive numbers a[i] and
  * a[i−1], from the right, which satisfy a[i] >a[i−1].
- * Now, no rearrangements to the right of a[i-1]a[i−1] can create a larger
+ * Now, no rearrangements to the right of a[i-1] can create a larger
  * permutation since that subarray consists of numbers in descending order.
  * Thus, we need to rearrange the numbers to the right of a[i-1] including
  * itself.
